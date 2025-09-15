@@ -24,6 +24,4 @@ It helps job seekers understand how well their resumes align with specific roles
 - **PDF Processing:** PyMuPDF, Pillow  
 - **Templates:** Jinja2  
 
----
-
-## 📂 Project Structure  
+ 
