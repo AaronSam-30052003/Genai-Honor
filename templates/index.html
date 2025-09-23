@@ -5,140 +5,169 @@
   <title>ATS Resume Expert</title>
   <style>
     body {
-      font-family: "Poppins", "Segoe UI", sans-serif;
-      background: linear-gradient(135deg, #6e8efb, #a777e3);
+      font-family: "Inter", "Segoe UI", sans-serif;
+      background: #f5f7fa;
       margin: 0;
       padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       min-height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
     }
 
-    .container {
-      width: 95%;
-      max-width: 950px;
-      background: rgba(255, 255, 255, 0.15);
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.3);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      animation: fadeIn 1s ease-in-out;
+    header {
+      background: #1f2937;
+      color: #fff;
+      padding: 16px 24px;
+      font-size: 20px;
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 24px 32px;
     }
 
     h1 {
-      text-align: center;
-      font-size: 2.3rem;
-      color: #fff;
-      text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-      margin-bottom: 20px;
-      letter-spacing: 1px;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #111827;
+      margin: 0 0 24px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 20%;
     }
 
     label {
       font-weight: 600;
-      color: #fff;
-      display: block;
-      margin-bottom: 6px;
+      color: #374151;
+      font-size: 14px;
     }
 
-    textarea, input[type="file"] {
-      width: 100%;
+    textarea {
+      width: 500%;
+      min-height: 140px;
+      max-height: 180px;
       padding: 12px;
-      margin-bottom: 18px;
-      border: none;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background: #f9fafb;
       font-size: 15px;
       outline: none;
-      transition: 0.3s;
+      resize: vertical;
+      transition: 0.25s;
+    }
+
+    input[type="file"] {
+      padding: 10px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background: #f9fafb;
+      font-size: 15px;
+      outline: none;
+      cursor: pointer;
     }
 
     textarea:focus, input[type="file"]:focus {
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-      transform: scale(1.02);
+      border-color: #3b82f6;
+      background: #fff;
+      box-shadow: 0 0 0 2px rgba(59,130,246,0.15);
     }
+
     .actions {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-template-columns: repeat(5, 1fr); /* 5 per row */
       gap: 12px;
-      margin-top: 10px;
     }
 
     button {
-      padding: 14px;
+      padding: 12px;
       border: none;
-      border-radius: 14px;
+      border-radius: 8px;
       font-size: 15px;
       font-weight: 600;
       cursor: pointer;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      color: white;
+      background: #3b82f6;
+      color: #fff;
       transition: 0.3s;
-      letter-spacing: 0.5px;
+      text-align: center;
+      white-space: nowrap;
+      width: 100%;
     }
 
     button:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0px 6px 18px rgba(0,0,0,0.2);
+      background: #2563eb;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    button:nth-child(2n) {
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-    }
-    button:nth-child(3n) {
-      background: linear-gradient(135deg, #43e97b, #38f9d7);
-    }
-    button:nth-child(4n) {
-      background: linear-gradient(135deg, #f7971e, #ffd200);
-      color: #222;
-    }
     .result {
-      margin-top: 30px;
-      padding: 20px;
-      border-radius: 15px;
-      background: rgba(255, 255, 255, 0.8);
-      color: #222;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-      animation: slideUp 0.8s ease;
+      margin-top: 24px;
+      padding: 16px;
+      border-radius: 8px;
+      background: #f9fafb;
+      color: #111827;
+      border: 1px solid #e5e7eb;
     }
 
     .result h3 {
       margin: 0 0 10px;
-      color: #333;
+      color: #1f2937;
+      font-size: 16px;
+      font-weight: 600;
     }
 
     pre {
       white-space: pre-wrap;
       font-family: "Fira Code", monospace;
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.6;
-      color: #444;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
+      color: #374151;
     }
 
-    @keyframes slideUp {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    footer {
+      background: #f3f4f6;
+      padding: 12px 20px;
+      font-size: 13px;
+      color: #6b7280;
+      text-align: center;
+      border-top: 1px solid #e5e7eb;
     }
-    @media (max-width: 600px) {
-      h1 { font-size: 1.8rem; }
-      button { font-size: 14px; padding: 12px; }
+
+    @media (max-width: 800px) {
+      .actions {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      h1 { font-size: 1.4rem; }
+      button { font-size: 14px; padding: 10px; }
+      textarea { min-height: 100px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>ATS Resume Expert</h1>
+  <header>ATS Resume Expert</header>
+
+  <main>
+    <h1>Resume Analysis Tool</h1>
     <form method="post" action="/process" enctype="multipart/form-data">
       <div class="field">
         <label>Job Description</label>
-        <textarea name="job_desc" rows="5" required>{{ job_desc }}</textarea>
+        <textarea name="job_desc" required>{{ job_desc }}</textarea>
       </div>
       
       <div class="field">
@@ -157,14 +186,25 @@
         <button type="submit" name="action" value="experience">Experience Match</button>
         <button type="submit" name="action" value="grammar">Grammar Check</button>
       </div>
-    </form>
 
-    {% if result %}
-    <div class="result">
-      <h3>Analysis Result</h3>
-      <pre>{{ result }}</pre>
-    </div>
-    {% endif %}
-  </div>
+      {% if result %}
+      <div class="result" id="result">
+        <h3>Analysis Result</h3>
+        <pre>{{ result }}</pre>
+      </div>
+      {% endif %}
+    </form>
+  </main>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", function() {
+      const resultBox = document.getElementById("result");
+      if (resultBox) {
+        resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  </script>
 </body>
 </html>
+
+
